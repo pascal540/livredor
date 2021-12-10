@@ -8,7 +8,13 @@ require_once 'Message.php';
 class GuestBook   {
 
     private  $file;
-
+    
+    /**
+     * __construct
+     *
+     * @param  mixed $file
+     * @return void
+     */
     public function __construct (string $file){
        $directory=dirname($file);
       if (!is_dir($directory)) 
@@ -24,12 +30,23 @@ class GuestBook   {
     }
     
     // methodes
-
+    
+    /**
+     * addMessage
+     *
+     * @param  mixed $message
+     * @return void
+     */
     public function addMessage(Message $message):void{       
         // var_dump($message);
         file_put_contents($this->file,$message->toJSON().PHP_EOL,FILE_APPEND);
     }
-
+   
+    /**
+     * getMessages
+     *
+     * @return array
+     */
     public function getMessages() :array {
        $content=trim(file_get_contents($this->file));
         $lines=explode(PHP_EOL,$content);
@@ -37,8 +54,7 @@ class GuestBook   {
         foreach ($lines as $line) {
             $messages[] = Message::fromJSON(($line)); // appel methode static avec '::'
         }
-        // echo('on est dans getMessages()');
-        //  var_dump($messages);
+        
          return array_reverse($messages);
         // 
     }

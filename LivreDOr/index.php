@@ -1,3 +1,6 @@
+<!-- Pascal Haas 8-12-2021 
+CDA 2021-2022
+ -->
 <?php
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'GuestBook.php';

@@ -52,7 +52,7 @@ class Message
        $username = htmlentities($this->username);
         $this->date->setTimezone(new DateTimeZone('Europe/Paris'));
         $date=$this->date->format('d/m/Y à H:i');
-        $message=nl2br(htmlentities($this->message)); //nl2br rajoute des br au html pou rfaire les sauts d elignes fait au cas ou messge sur plusieurs lignes 
+        $message=nl2br(htmlentities($this->message)); //nl2br rajoute des br au html pour faire les sauts d elignes fait au cas ou messge sur plusieurs lignes 
          return <<<HTML
         <p>
             <strong>{$username}</strong> <em>le {$date}</em><br>
@@ -60,7 +60,12 @@ class Message
         </p>
         HTML;
     }
-
+    
+    /**
+     * toJSON
+     *
+     * @return string
+     */
     public function toJSON() : string{
         
            return json_encode(
